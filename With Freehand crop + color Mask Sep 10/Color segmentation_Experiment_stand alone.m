@@ -1,4 +1,5 @@
 function DeltaE()
+%GITHUB VERSION
 
 outputVideo = VideoWriter('matching_regions_video_out.avi');
 v = VideoReader('time_cropped_video.avi');
