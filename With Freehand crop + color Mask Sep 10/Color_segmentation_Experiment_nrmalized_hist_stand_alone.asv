@@ -1,0 +1,114 @@
+outputVideo = VideoWriter('matching_regions_video_out_Norm_Hist_test.avi');
+v = VideoReader('test_time_crop_video1.mp4');
+
+numFrames = v.NumberOfFrames;
+
+display(['Total frames: ' num2str(numFrames)]);
+Resize='on';
+
+y = zeros(1, numFrames);
+
+%Step - Call main training function to return hist avg [Only once]
+     %  hist_avg= main_training();
+        hist_avg
+% sum only those pixel values which have non-zero intensity values 
+for i=1:numFrames,
+ frame = read(v, i);
+      
+        %%BEGIN IMAGE READING - fullImageFileName
+
+        % Read in image into an array.
+        i                                                      %display i 
+        rgbImage = frame; 
+       
+        imageHsv = rgb2hsv(rgbImage);
+        % Extract out the color bands from the original image
+        % into 3 separate 2D arrays, one for each color component.
+        %LChannel = lab_Image(:, :, 1); 
+        %aChannel = lab_Image(:, :, 2); 
+        %bChannel = lab_Image(:, :, 3); 
+        
+        HChannel = imageHsv(:, :, 1);
+        SChannel = imageHsv(:, :, 2);
+        VChannel = imageHsv(:, :, 3);
+    if i==1 
+        % Display the lab images.
+        figure;
+        subplot(2, 4, 1);
+        imshow(rgbImage);
+        subplot(2, 4, 2);
+        imshow(HChannel, []);
+        title('H Channel');
+        subplot(2, 4, 3);
+        imshow(SChannel, []);
+        title('S Channel');
+        subplot(2, 4, 4);
+        imshow(VChannel, []);
+        title('V Channel');
+    end
+ %Step -  Get threshold from user maybe
+        
+  %Step - call main testing part on video frame to return seg image
+        imtest_skin=main_testing(rgbImage,hist_avg);
+        
+        if i==1
+            subplot(2, 4, 5);
+            imshow(imtest_skin, []);
+            title('Segmented Img');
+        end
+        %Write each Image to video for output video of matching color
+        %regions
+     %   outputVideo = VideoWriter('matching_regions_video_out.avi');
+     
+     
+        open(outputVideo);
+        seg_img = imtest_skin;
+        
+        
+        writeVideo(outputVideo,seg_img);
+
+        % Consider only the green channel & non-zero pixels for averaging
+      % h_seg_img=seg_img(:,:,1);
+    %    seg_img=im2double(seg_img);
+   %     h_seg_img=seg_img(:,:,1);
+   %     rgb_seg_img=hsv2rgb(seg_img);
+   %     g_seg_img=rgb_seg_img(:,:,2);       %Extract only Green channel
+        
+       if i==1
+            subplot(2, 4, 6);
+            imshow(h_seg_img, []);
+            title('Segmented Hue channel Img');
+       end
+       
+       hueImage = seg_img(:,:, 1);
+       meanHueImg = mean2(hueImage);
+       
+       greenImage = seg_img(:,:,2);
+       meanGreeImg = mean2(hueImage);
+              
+       %{ 
+       
+        [nrows ncols] = size(seg_img);
+        amp=0;
+        count=0;
+         for ii = 1:nrows
+           for jj = 1:ncols
+              if(h_seg_img(ii,jj) > 0)   %Only take the non-zero pixel values
+                 count=count+1;
+                 amp(count)=h_seg_img(ii,jj);
+              end
+           end
+         end
+        %}
+       
+ y(i)=meanHueImg;
+ 
+end
+ close(outputVideo);
+ figure();
+ plot(y);
+ y;
+
+
+% ---------- End of main function ---------------------------------
+
