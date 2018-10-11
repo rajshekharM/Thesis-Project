@@ -13,7 +13,7 @@ y = zeros(1, numFrames);
      %  hist_avg= main_training();
         hist_avg
 % sum only those pixel values which have non-zero intensity values 
-for i=1:numFrames,
+parfor i=1:numFrames,
  frame = read(v, i);
       
         %%BEGIN IMAGE READING - fullImageFileName
