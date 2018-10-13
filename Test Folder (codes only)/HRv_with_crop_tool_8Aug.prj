@@ -1,0 +1,78 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="440785032" file="C:\Users\Rajshekhar\Documents\Project EVM\EVM_Matlab\Simplified Heart rate measure\With Freehand crop Mask 8 Aug\HRv_with_crop_tool_8Aug.prj" location="C:\Users\Rajshekhar\Documents\Project EVM\EVM_Matlab\Simplified Heart rate measure\With Freehand crop Mask 8 Aug" name="HRv_with_crop_tool_8Aug" target="target.mlapps" target-name="Package App">
+    <param.appname>HRv_with_crop_tool_8Aug</param.appname>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>C:\Users\Rajshekhar\Documents\Project EVM\EVM_Matlab\Simplified Heart rate measure\With Freehand crop Mask 8 Aug</param.output>
+    <param.guid>9332280b-9219-4225-8eaa-60b8c75dce2f</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\simple_layout.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\acquire_1_with_mask.m</file>
+      <file>${PROJECT_ROOT}\bp_FIR_zero_phase_transients_removed_1.m</file>
+      <file>${PROJECT_ROOT}\practise_process_1_only_fft.m</file>
+      <file>${PROJECT_ROOT}\simple_layout.fig</file>
+      <file>${PROJECT_ROOT}\video_cropping_time.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\Rajshekhar\Documents\Project EVM\EVM_Matlab\Simplified Heart rate measure" name="With Freehand crop Mask 8 Aug" optional="false">C:\Users\Rajshekhar\Documents\Project EVM\EVM_Matlab\Simplified Heart rate measure\With Freehand crop Mask 8 Aug</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2017a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.2</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
